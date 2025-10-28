@@ -1,38 +1,16 @@
 .App {
-  text-align: center;
+  text-align: center;       /* Centers everything inside the App div */
+  margin-top: 50px;         /* Adds space from the top of the page */
+  font-family: Arial, sans-serif;  /* Makes text look clean */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  color: #8c8614;           /* Purple color for the header */
+  font-size: 36px;          /* Bigger font for the header */
+  margin-bottom: 20px;      /* Space between header and paragraph */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+p {
+  color: #555;              /* Dark gray text for paragraph */
+  font-size: 18px;          /* Slightly bigger text for readability */
 }
