@@ -1,17 +1,24 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import './App.css';
 
 function App() {
-  const [reviews, setReviews] = useState([]);
+  const [query, setQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
-  // Fetch reviews on load
-  useEffect(() => {
-    axios.get("http://localhost:8080/api/reviews")
-      .then(res => setReviews(res.data))
-      .catch(err => console.error("Error fetching reviews:", err));
-  }, []);
+  // Handle search
+  const handleSearch = async () => {
+    if (!query) return; // prevent empty search
+    try {
+      const res = await axios.get(
+        `http://localhost:8080/api/reviews/search?title=${query}`
+      );
+      setSearchResults(res.data);
+    } catch (err) {
+      console.error("Error searching reviews:", err);
+    }
+  };
 
   return (
     <div className="App">
@@ -33,8 +40,13 @@ function App() {
 
         {/* Search bar */}
         <div className="main-search">
-          <input type="text" placeholder="Search for a book..." />
-          <button className="circle-btn">🔍</button>
+          <input
+            type="text"
+            placeholder="Search for a book..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <button className="circle-btn" onClick={handleSearch}>🔍</button>
         </div>
 
         {/* Write review block */}
@@ -42,21 +54,19 @@ function App() {
           <p>Bought a book recently? <Link to="/write-review">Write a review →</Link></p>
         </div>
 
-        {/* Reviews from backend */}
-        <div className="reviews-list">
-          <h2>Latest Reviews</h2>
-          {reviews.length > 0 ? (
-            reviews.map((r, i) => (
+        {/* Search results */}
+        {searchResults.length > 0 && (
+          <div className="search-results">
+            <h2>Search Results</h2>
+            {searchResults.map((r, i) => (
               <div key={i} className="review-card">
-                <h3>{r.title}</h3>
-                <p><strong>{r.name}</strong> — ⭐ {r.rating}</p>
-                <p>{r.text}</p>
+                <h3>{r.bookTitle} by {r.author}</h3>
+                <p><strong>Reviewed by:</strong> {r.reviewer}</p>
+                <p>{r.review}</p>
               </div>
-            ))
-          ) : (
-            <p>No reviews yet.</p>
-          )}
-        </div>
+            ))}
+          </div>
+        )}
       </header>
     </div>
   );
