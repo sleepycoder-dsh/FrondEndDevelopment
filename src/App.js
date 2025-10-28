@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       {/* Navbar */}
       <nav className="navbar">
-        <div className="logo">Love Book</div>
+        <div className="logo">Book Hive📚</div>
 
         {/* Menu dropdown */}
         <div className="dropdown">
