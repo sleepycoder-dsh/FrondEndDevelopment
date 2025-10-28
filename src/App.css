@@ -1,16 +1,108 @@
-.App {
-  text-align: center;       /* Centers everything inside the App div */
-  margin-top: 50px;         /* Adds space from the top of the page */
-  font-family: Arial, sans-serif;  /* Makes text look clean */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fafafa; /* light background like Trustpilot */
 }
 
-h1 {
-  color: #8c8614;           /* Purple color for the header */
-  font-size: 36px;          /* Bigger font for the header */
-  margin-bottom: 20px;      /* Space between header and paragraph */
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #dc06f0;
+  padding: 12px 30px;
 }
 
-p {
-  color: #555;              /* Dark gray text for paragraph */
-  font-size: 18px;          /* Slightly bigger text for readability */
+.logo {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  min-width: 180px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  border-radius: 6px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f3f4f6;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Header Section */
+.header {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.header h1 {
+  font-size: 36px;
+  color: #dc06f0;
+}
+
+.header p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Big Search Bar */
+.main-search {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.main-search input {
+  width: 450px;
+  padding: 16px;
+  border: none;
+  border-radius: 30px 0 0 30px;
+  font-size: 16px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  outline: none;
+}
+
+.main-search button {
+  padding: 16px 20px;
+  border: none;
+  background: #2563eb; /* blue button */
+  color: white;
+  font-size: 18px;
+  border-radius: 0 30px 30px 0;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.main-search button:hover {
+  background: white;
 }
