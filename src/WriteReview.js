@@ -8,6 +8,8 @@ function WriteReview() {
   const [author, setAuthor] = useState("");
   const [reviewer, setReviewer] = useState("");
   const [review, setReview] = useState("");
+  const [rating, setRating] = useState(0); // ⭐ state for rating
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -17,10 +19,11 @@ function WriteReview() {
         bookTitle,
         author,
         reviewer,
-        review
+        review,
+        rating
       });
-      alert("Review submitted successfully!"); // show confirmation
-      navigate("/"); // redirect back to homepage
+      alert("Review submitted successfully!");
+      navigate("/");
     } catch (err) {
       console.error("Error submitting review:", err);
       alert("Failed to submit review. Check console for details.");
@@ -58,6 +61,24 @@ function WriteReview() {
           onChange={(e) => setReview(e.target.value)}
           placeholder="Write your review here..."
         />
+
+        <label>Rating:</label>
+        <div className="stars">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <span
+              key={star}
+              onClick={() => setRating(star)}
+              style={{
+                cursor: "pointer",
+                fontSize: "24px",
+                color: star <= rating ? "gold" : "gray"
+              }}
+            >
+              ★
+            </span>
+          ))}
+        </div>
+        <p>Selected Rating: {rating} / 5</p>
 
         <button type="submit">Submit Review</button>
       </form>
