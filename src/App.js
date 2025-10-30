@@ -12,7 +12,7 @@ function App() {
     if (!query) return; // prevent empty search
     try {
       const res = await axios.get(
-        `http://localhost:8080/api/reviews/search?title=${query}`
+        `http://34.174.231.112:8080/api/reviews/search?title=${query}`
       );
       setSearchResults(res.data);
     } catch (err) {
