@@ -15,7 +15,7 @@ function WriteReview() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/api/reviews", {
+      await axios.post("http://34.136.172.142:8080/api/reviews", {
         bookTitle,
         author,
         reviewer,
